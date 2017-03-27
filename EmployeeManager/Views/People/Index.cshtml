@@ -1,0 +1,66 @@
+﻿@model IEnumerable<EmployeeManager.Models.Person>
+
+@{
+  ViewBag.Title = "People";
+}
+
+<h2>People</h2>
+
+<p>
+  @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "People", FormMethod.Get, new { @class = "form-inline" }))
+{
+  <div class="form-group">
+    <label>Search:</label>
+    @Html.TextBox("searchstring", null, new { @class = "form-control" })
+    <input type="submit" class="btn btn-default" value="Search" />
+  </div>
+}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>
+        @Html.DisplayNameFor(model => model.LastName)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.FirstName)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.BirthDate)
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model)
+    {
+      <tr>
+        <td>
+          <a href="@Url.Action("Edit", "People", new { id = item.PersonId })" class="btn btn-default" title="Edit"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+          <a href="@Url.Action("Details", "People", new { id = item.PersonId})" class="btn btn-default" title="View"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>
+          <a href="@Url.Action("Delete", "People", new { id = item.PersonId})" class="btn btn-default" title="Delete"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.BirthDate)
+        </td>
+      </tr>
+    }
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="5">
+        <strong>Total number of Employees: @Model.Count()</strong>
+      </td>
+    </tr>
+  </tfoot>
+
+</table>

@@ -1,0 +1,50 @@
+﻿@model EmployeeManager.Models.Employee
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Employee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Person.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Person.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TerminatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TerminatedDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
